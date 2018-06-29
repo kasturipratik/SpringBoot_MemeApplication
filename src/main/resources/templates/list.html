@@ -6,11 +6,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <style>
-        img{
-            max-height: 150px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="container ">
@@ -36,6 +32,7 @@
                         </div>
                         <div class="card-footer text-muted" >
                             <h4 class="" th:text="${meme.secondCaption}"></h4>
+                            <p  th:text="${meme.description}" class="text-"></p>
                             <hr>
                            <a th:href="@{/detail/{id}(id=${meme.id})}" class="btn btn-sm btn-secondary  mt-3 text-white">Details</a>
                             <a th:href="@{/update/{id}(id=${meme.id})}" class="btn btn-sm btn-secondary mt-3 text-white">Update</a>
@@ -45,6 +42,31 @@
                     </div>
                 </div>
             </div>
+     <!--       carousel practice
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+
+                    <h3  th:text="${meme.firstCaption}"></h3>
+                <div class="carousel-inner" th:each="meme :${memes}">
+                    <div class="carousel-item active"  th:if="${meme.image}!= null">
+
+                          <img th:src="${meme.image}"  alt="...">
+
+                        <div class="carousel-caption d-none d-md-block">
+                            <h4 class="" th:text="${meme.secondCaption}"></h4>
+                            <p  th:text="${meme.description}" class="text-"></p>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        end carousel-->
         </div>
         <div th:replace="base :: footer"></div>
     </div>
