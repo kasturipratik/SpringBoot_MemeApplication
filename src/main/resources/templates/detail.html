@@ -2,10 +2,11 @@
 <html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Detail Meme</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/detailStyle.css">
 </head>
 <body>
     <div class="container ">
@@ -13,23 +14,53 @@
 
         <div class="bg-light p-5">
             <h2 class="mt-4 pb-5 text-center">Meme Details</h2>
-            <a href="/" class="btn btn-warning ">Show All the Memes</a>
-            <a href="/add" class="btn btn-warning ml-3">New Meme</a>
-            <a th:href="@{/delete/{id}(id=${memes.id})}" class="btn btn-warning ml-3">Delete</a><br/><br/>
-            <div class="row ">
+
+            <div class="row">
+                <div class="col-sm-12 col-md-3 mt-2">
+                    <a href="/" class="btn btn-warning ">Show All the Memes</a>
+
+                </div>
+                <div class="col-sm-12 col-md-3 mt-2">
+
+                    <a href="/add" class="btn btn-warning ">New Meme</a>
+                </div>
+              <div class="col-sm-12 col-md-3 mt-2">
+                  <a th:href="@{/delete/{id}(id=${memes.id})}" class="btn btn-warning ">Delete</a><br/><br/>
+              </div>
+
+            </div>
+    <!------------------>
+            <div class="row mt-2">
                 <div class="col-sm-12 col-md-12">
                     <div class="jumbotron  text-muted " align="center">
                         <h3 th:text="${memes.firstCaption}" ></h3>
                         <img th:src="${memes.image}" alt="meme image" class="img-responsive img-fluid rounded"/>
-                        <h4 th:text="${memes.secondCaption}"></h4>
-                        <p th:text="${memes.description}"></p>
+                        <!------------>
+                        <div class="row">
+                            <div class="col-sm-0 col-md-2">
 
+                            </div>
+                            <!---->
+                            <div class="col-sm-12 col-md-3 mt-3" >
+                                <a th:href="@{/like/{id}(id=${memes.id})}" >
+                                    <img src="/image/heartButton.png" onmouseover="this.src='/image/heart.png'" onmouseout="this.src='/image/heartButton.png'" width="25" height="25">
+                                </a>
+                                <strong><span th:text="${memes.likeCount}"></span> likes</strong>
+                                <p th:text="${memes.todayDate}"></p>
+                            </div>
+                            <!---->
+                            <div class="col-sm-12 col-md-7 mt-3">
+                                <h4 th:text="${memes.secondCaption}"></h4>
+                                <p th:text="${memes.description}"></p>
+                            </div>
+                            <!---->
+                        </div>
                     </div>
-
+                    <!---->
                 </div>
-
+                <!---->
             </div>
-
+<!----------------------->
         </div>
 
         <div th:replace="base :: footer"></div>

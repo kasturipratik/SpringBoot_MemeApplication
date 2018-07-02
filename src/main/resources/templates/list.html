@@ -16,7 +16,7 @@
             <h2 class="mt-4 pb-5 text-center">Meme Application</h2>
             <a href="/add"  class="btn btn-warning">New Meme</a><br/>
 
-
+<!--standerd block display of user input-->
             <div  class="row mt-4">
 
                 <div  th:each="meme :${memes}" class="col-sm-12 col-md-4 mt-3">
@@ -31,9 +31,23 @@
                             </div>
                         </div>
                         <div class="card-footer text-muted" >
-                            <h4 class="" th:text="${meme.secondCaption}"></h4>
-                            <p  th:text="${meme.description}" class="text-"></p>
-                            <hr>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-5">
+                                    <a th:href="@{/like/{id}(id=${meme.id})}" >
+                                        <img src="image/heartButton.png" onmouseover="this.src='image/heart.png'" onmouseout="this.src='image/heartButton.png'" width="25" height="25">
+                                    </a>
+                                    <strong><span th:text="${meme.likeCount}"></span> likes</strong>
+                                    <p th:text="${meme.todayDate}"></p>
+                                </div>
+                                <div class="col-sm-12 col-md-7">
+                                    <h4 class="" th:text="${meme.secondCaption}"></h4>
+                                </div>
+                            </div>
+
+                            <hr/>
+                            <p  th:text="${meme.shortDesc}" class=""></p>
+
                            <a th:href="@{/detail/{id}(id=${meme.id})}" class="btn btn-sm btn-secondary  mt-3 text-white">Details</a>
                             <a th:href="@{/update/{id}(id=${meme.id})}" class="btn btn-sm btn-secondary mt-3 text-white">Update</a>
                             <a th:href="@{/delete/{id}(id=${meme.id})}" class="btn btn-sm btn-secondary mt-3 text-white">Delete</a>
@@ -42,31 +56,9 @@
                     </div>
                 </div>
             </div>
-     <!--       carousel practice
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <!--    carousel practice-->
 
-                    <h3  th:text="${meme.firstCaption}"></h3>
-                <div class="carousel-inner" th:each="meme :${memes}">
-                    <div class="carousel-item active"  th:if="${meme.image}!= null">
-
-                          <img th:src="${meme.image}"  alt="...">
-
-                        <div class="carousel-caption d-none d-md-block">
-                            <h4 class="" th:text="${meme.secondCaption}"></h4>
-                            <p  th:text="${meme.description}" class="text-"></p>
-                        </div>
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        end carousel-->
+       <!-- end carousel-->
         </div>
         <div th:replace="base :: footer"></div>
     </div>
