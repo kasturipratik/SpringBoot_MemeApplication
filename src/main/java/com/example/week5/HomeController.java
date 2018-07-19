@@ -88,9 +88,7 @@ public class HomeController {
     @RequestMapping("/like/{id}")
     public String likeButton(@PathVariable("id") long id, Meme meme){
         meme= memeRepository.findById(id).get();
-
         meme.setLikeCount(meme.getLikeCount()+1);
-
         memeRepository.save(meme);
         return "redirect:/";
     }
